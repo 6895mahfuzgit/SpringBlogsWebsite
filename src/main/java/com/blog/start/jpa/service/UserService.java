@@ -7,6 +7,8 @@ import com.blog.start.jpa.repositorie.BlogRepository;
 import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -50,7 +52,7 @@ public class UserService {
         for (Blog blog : blogs) {
 
 
-            List<Item> items = itemRepository.findByBlog(blog);
+            List<Item> items = itemRepository.findByBlog(blog, new PageRequest(0, 10, Sort.Direction.DESC, "publishedDate"));
             blog.setItems(items);
 
         }

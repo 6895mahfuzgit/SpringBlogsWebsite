@@ -54,6 +54,9 @@
                 <ul class="nav navbar-nav">
                     <li class="${current=='home'?'active':''}"><a href="<spring:url value="/"/>">Home</a></li>
                     <li class="${current=='users'?'active':''}"><a href="<spring:url value="/users"/>">Users</a></li>
+                    <li class="${current=='register'?'active':''}"><a
+                            href="<spring:url value="/register"/>">Register</a>
+                    </li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
