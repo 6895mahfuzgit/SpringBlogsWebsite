@@ -26,10 +26,17 @@
         <put-attribute name="body" value="/WEB-INF/view/user-detail.jsp"/>
         <put-attribute name="current" value="user-detail"/>
     </definition>
+
     <definition name="user-register" extends="common">
         <put-attribute name="title" value="User Registration"/>
         <put-attribute name="body" value="/WEB-INF/view/user-register.jsp"/>
         <put-attribute name="current" value="register"/>
+    </definition>
+
+    <definition name="login" extends="common">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/view/login.jsp"/>
+        <put-attribute name="current" value="login"/>
     </definition>
 
 </tiles-definitions>
