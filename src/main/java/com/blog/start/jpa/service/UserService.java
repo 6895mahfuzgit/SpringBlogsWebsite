@@ -18,6 +18,7 @@ import java.util.List;
  * Created by MahfuzCSE'11 on 12-Oct-16.
  */
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -61,5 +62,9 @@ public class UserService {
 
 
         return user;
+    }
+
+    public void save(User user) {
+        userRepository.save(user);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by MahfuzCSE'11 on 12-Oct-16.
@@ -51,6 +52,16 @@ public class UserController {
     @RequestMapping("/register")
     public String showRegisterForm() {
 
+
+        return "user-register";
+
+    }
+
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String doRegisterForm(@ModelAttribute("user") User user) {
+
+        userService.save(user);
 
         return "user-register";
 

@@ -48,4 +48,6 @@
 
     <jpa:repositories base-package="com.blog.start.jpa.repositorie"/>
 
+    <import resource="spring-security-config.xml"/>
+
 </beans>
