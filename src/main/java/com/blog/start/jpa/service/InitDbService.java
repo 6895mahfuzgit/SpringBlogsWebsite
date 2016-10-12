@@ -3,11 +3,11 @@ package com.blog.start.jpa.service;
 import com.blog.start.jpa.entity.Blog;
 import com.blog.start.jpa.entity.Item;
 import com.blog.start.jpa.entity.Role;
-import com.blog.start.jpa.entity.Userj;
+import com.blog.start.jpa.entity.User;
 import com.blog.start.jpa.repositorie.BlogRepository;
 import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.repositorie.RoleRepository;
-import com.blog.start.jpa.repositorie.UserjRepository;
+import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class InitDbService {
 
 
     @Autowired
-    private UserjRepository userjRepository;
+    private UserRepository userRepository;
 
 
     @Autowired
@@ -55,21 +55,21 @@ public class InitDbService {
         roleRepository.save(roleAdmin);
 
 
-        Userj userAdmin = new Userj();
+        User userAdmin = new User();
         userAdmin.setName("admin");
         List<Role> roles = new ArrayList<Role>();
         roles.add(roleAdmin);
         roles.add(roleUser);
         userAdmin.setRoles(roles);
 
-        userjRepository.save(userAdmin);
+        userRepository.save(userAdmin);
 
 
         Blog blogjinit = new Blog();
 
         blogjinit.setName("java blog");
         blogjinit.setUrl("http://feeds.feedburner.com/javavids?format=xml");
-        blogjinit.setUserj(userAdmin);
+        blogjinit.setUser(userAdmin);
         blogRepository.save(blogjinit);
 
 
@@ -83,11 +83,11 @@ public class InitDbService {
 
         Item item2 = new Item();
         item2.setBlog(blogjinit);
-        item2.setTitle("First");
-        item2.setLink("http://www.javavids.com");
+        item2.setTitle("2nd");
+        item2.setLink("http://www.javavidzcvbc s.com");
         item2.setPublishedDate(new Date());
 
-        itemRepository.save(item1);
+        itemRepository.save(item2);
 
     }
 

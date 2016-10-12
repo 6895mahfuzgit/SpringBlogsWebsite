@@ -1,10 +1,15 @@
 package com.blog.start.jpa.service;
 
-import com.blog.start.jpa.entity.Userj;
-import com.blog.start.jpa.repositorie.UserjRepository;
+import com.blog.start.jpa.entity.Blog;
+import com.blog.start.jpa.entity.Item;
+import com.blog.start.jpa.entity.User;
+import com.blog.start.jpa.repositorie.BlogRepository;
+import com.blog.start.jpa.repositorie.ItemRepository;
+import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -14,16 +19,45 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserjRepository userjRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private BlogRepository blogRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
 
-    public List<Userj> findAll() {
+    public List<User> findAll() {
 
-        return userjRepository.findAll();
+        return userRepository.findAll();
     }
 
-    public Userj findOne(long id) {
+    public User findOne(int id) {
 
-        return userjRepository.findOne(id);
+        return userRepository.findOne(id);
+    }
+
+
+    @Transactional
+    public User findOneWithBlogs(int id) {
+
+        User user = findOne(id);
+
+
+        List<Blog> blogs = blogRepository.findByUser(user);
+
+        for (Blog blog : blogs) {
+
+
+            List<Item> items = itemRepository.findByBlog(blog);
+            blog.setItems(items);
+
+        }
+
+        user.setBlogs(blogs);
+
+
+        return user;
     }
 }

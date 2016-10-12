@@ -7,43 +7,39 @@ import java.util.List;
  * Created by MahfuzCSE'11 on 12-Oct-16.
  */
 @Entity
-public class Userj {
+public class User {
+
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
+
+
+    @Column(unique = true)
 
     private String name;
 
     private String email;
 
+
     private String password;
 
+    private boolean enabled;
 
     @ManyToMany
     @JoinTable
     private List<Role> roles;
 
-
-    @OneToMany
-    @JoinColumn(name = "userj")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Blog> blogs;
 
 
-    public List<Blog> getBlogs() {
-        return blogs;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -70,11 +66,27 @@ public class Userj {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 }

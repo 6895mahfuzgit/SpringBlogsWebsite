@@ -9,39 +9,31 @@ import java.util.Date;
  */
 @Entity
 public class Item {
-
-
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
+    @Column(length = 1000)
     private String title;
 
+    @Column(length = Integer.MAX_VALUE)
     private String description;
 
     @Column(name = "published_date")
     private Date publishedDate;
 
+    @Column(length = 1000)
     private String link;
 
     @ManyToOne
     @JoinColumn(name = "blog_id")
     private Blog blog;
 
-
-    public Blog getBlog() {
-        return blog;
-    }
-
-    public void setBlog(Blog blog) {
-        this.blog = blog;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -75,5 +67,13 @@ public class Item {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }

@@ -6,10 +6,38 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<div class="page-header">
 
-    ${user.name}
+<%@include file="../layout/taglibs.jsp" %>
 
-</div>
+<h1>${user.name}</h1>
+<c:forEach items="${user.blogs}" var="blog">
+    <h1>${blog.name}</h1>
+
+    <p>${blog.url}</p>
+
+    <table class="table  table-bordered  table-hover table-striped table-sm">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Link</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <c:forEach items="${blog.items}" var="item">
+
+            <tr>
+                <th>${item.title}</th>
+                <th>${item.link}</th>
+
+            </tr>
+
+        </c:forEach>
+
+        </tbody>
+
+
+    </table>
+</c:forEach>
+

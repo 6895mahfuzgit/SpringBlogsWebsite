@@ -10,46 +10,27 @@ import java.util.List;
 @Entity
 public class Blog {
 
-
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
+    @Column(length = 1000)
     private String url;
 
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Userj userj;
+    private User user;
 
-
-    @OneToMany
-    @JoinColumn(name = "blog")
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.REMOVE)
     private List<Item> items;
 
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public Userj getUserj() {
-        return userj;
-    }
-
-    public void setUserj(Userj userj) {
-        this.userj = userj;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,5 +48,21 @@ public class Blog {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

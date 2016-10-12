@@ -1,5 +1,7 @@
 package com.blog.start.controller;
 
+import com.blog.start.jpa.repositorie.BlogRepository;
+import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BlogRepository blogRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
+
 
     @RequestMapping("/users")
     public String users(Model model) {
@@ -28,10 +36,10 @@ public class UserController {
     }
 
     @RequestMapping("/users/{id}")
-    public String details(Model model, @PathVariable long id) {
+    public String details(Model model, @PathVariable int id) {
 
 
-        model.addAttribute("user", userService.findOne(id));
+        model.addAttribute("user", userService.findOneWithBlogs(id));
 
         return "user-detail";
 
