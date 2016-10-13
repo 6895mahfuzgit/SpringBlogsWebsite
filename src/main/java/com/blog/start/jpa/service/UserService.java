@@ -78,7 +78,6 @@ public class UserService {
         user.setPassword(md5PasswordEncoder.encodePassword(user.getPassword(), null));
 
 
-
         List<Role> roles = new ArrayList<Role>();
         roles.add(roleRepository.findByName("ROLE_USER"));
         user.setRoles(roles);
