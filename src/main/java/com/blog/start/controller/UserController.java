@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
 /**
  * Created by MahfuzCSE'11 on 12-Oct-16.
  */
@@ -63,7 +65,21 @@ public class UserController {
 
         userService.save(user);
 
-        return "user-register";
+        return "redirect:/register?success=true";
+
+    }
+
+
+
+    @RequestMapping("/account")
+    public String personaldetails(Model model,Principal principal) {
+
+
+
+        String name=principal.getName();
+        model.addAttribute("user", userService.findOneWithBlogs(name));
+
+        return "user-detail";
 
     }
 
