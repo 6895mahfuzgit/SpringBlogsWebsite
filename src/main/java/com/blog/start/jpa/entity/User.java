@@ -7,6 +7,7 @@ import java.util.List;
  * Created by MahfuzCSE'11 on 12-Oct-16.
  */
 @Entity
+@Table(name = "app_user")
 public class User {
 
 
