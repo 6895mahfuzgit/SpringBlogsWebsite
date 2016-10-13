@@ -11,17 +11,17 @@
 
 
 <form:form commandName="user" class="form-horizontal">
-    
-    
-    
-    <c:if test="${param.success eq true}">
+
+
+
+    <c:if test="${success eq true}">
         <div class="alert alert-success">
             Registration Successfull!!!
         </div>
 
     </c:if>
-    
-    
+
+
     <div class="form-group">
         <label class="col-sm-2 control-label">Name:</label>
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -61,22 +62,20 @@ public class UserController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegisterForm(@ModelAttribute("user") User user) {
+    public String doRegisterForm(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
 
         userService.save(user);
-
-        return "redirect:/register?success=true";
+        redirectAttributes.addFlashAttribute("success",true);
+        return "redirect:/register";
 
     }
 
 
-
     @RequestMapping("/account")
-    public String personaldetails(Model model,Principal principal) {
+    public String personaldetails(Model model, Principal principal) {
 
 
-
-        String name=principal.getName();
+        String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
 
         return "user-detail";
