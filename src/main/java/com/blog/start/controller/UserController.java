@@ -105,7 +105,10 @@ public class UserController {
 
     @RequestMapping("/blog/remove/{id}")
     public String deleteBlog(@PathVariable int id) {
-        blogService.delete(id);
+
+         Blog blog=blogService.findOne(id);
+
+        blogService.delete(blog);
         return "redirect:/account";
 
     }
