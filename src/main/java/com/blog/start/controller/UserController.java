@@ -91,7 +91,7 @@ public class UserController {
 
 
     @RequestMapping("/account")
-    public String personaldetails(Model model, Principal principal) {
+    public String account(Model model, Principal principal) {
         String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
         return "user-detail";
@@ -99,7 +99,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public String doRegister(@ModelAttribute("blog") Blog blog, Principal principal, RedirectAttributes redirectAttributes) {
+    public String doRegister(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal, RedirectAttributes redirectAttributes) {
+
+
+        if (result.hasErrors()) {
+
+            return account(model, principal);
+        }
+
 
         String name = principal.getName();
         blogService.save(blog, name);

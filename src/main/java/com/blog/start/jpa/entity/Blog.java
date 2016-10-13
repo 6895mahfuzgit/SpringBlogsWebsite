@@ -18,7 +18,8 @@ public class Blog {
     private Integer id;
 
     @Column(length = 1000)
-    @URL
+    @Size(min = 1, message = "Name must be at least 1 character!")
+    @URL(message = "Ivalid Url!!!")
     private String url;
 
     @Size(min = 1, message = "Name must be at least 1 character!")

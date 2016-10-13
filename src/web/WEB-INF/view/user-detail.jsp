@@ -43,6 +43,7 @@
 
                         <div class="col-sm-10">
                             <form:input path="name" class="form-control" id="inputEmail3" placeholder="Name"/>
+                            <form:errors path="name" cssStyle="color: #c7254e"/>
                         </div>
                     </div>
 
@@ -51,6 +52,7 @@
 
                         <div class="col-sm-10">
                             <form:input path="url" class="form-control" id="inputEmail3" placeholder="Name"/>
+                            <form:errors path="url" cssStyle="color: #c7254e"/>
                         </div>
                     </div>
 

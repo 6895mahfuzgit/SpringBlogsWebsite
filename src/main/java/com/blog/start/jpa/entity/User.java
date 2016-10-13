@@ -23,7 +23,7 @@ public class User {
     @Size(min = 3, message = "Name must be at least 3 characters")
     private String name;
 
-    @Email
+    @Email(message = "Invalid Email Address")
     private String email;
 
 

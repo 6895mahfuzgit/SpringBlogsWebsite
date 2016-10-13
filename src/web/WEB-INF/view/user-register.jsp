@@ -13,7 +13,6 @@
 <form:form commandName="user" class="form-horizontal">
 
 
-
     <c:if test="${success eq true}">
         <div class="alert alert-success">
             Registration Successfull!!!
@@ -27,6 +26,7 @@
 
         <div class="col-sm-10">
             <form:input path="name" class="form-control" id="inputEmail3" placeholder="Name"/>
+            <form:errors path="name" cssStyle="color:#c7254e"/>
         </div>
     </div>
 
@@ -35,6 +35,7 @@
 
         <div class="col-sm-10">
             <form:input path="email" class="form-control" id="inputEmail3" placeholder="Email"/>
+            <form:errors path="email" cssStyle="color: #c7254e"/>
         </div>
     </div>
 
@@ -44,6 +45,7 @@
 
         <div class="col-sm-10">
             <form:password path="password" class="form-control" id="inputEmail3" placeholder="Password"/>
+            <form:errors path="password" cssStyle="color: #c7254e"/>
         </div>
     </div>
 
