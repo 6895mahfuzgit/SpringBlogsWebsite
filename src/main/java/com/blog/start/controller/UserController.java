@@ -9,12 +9,14 @@ import com.blog.start.jpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 /**
@@ -74,8 +76,12 @@ public class UserController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegisterForm(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
+    public String doRegisterForm(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
 
+
+        if (result.hasErrors()) {
+            return "user-register";
+        }
 
         redirectAttributes.addFlashAttribute("success", true);
         userService.save(user);
@@ -106,7 +112,7 @@ public class UserController {
     @RequestMapping("/blog/remove/{id}")
     public String deleteBlog(@PathVariable int id) {
 
-         Blog blog=blogService.findOne(id);
+        Blog blog = blogService.findOne(id);
 
         blogService.delete(blog);
         return "redirect:/account";
