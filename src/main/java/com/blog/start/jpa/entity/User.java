@@ -1,6 +1,9 @@
 package com.blog.start.jpa.entity;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -17,12 +20,14 @@ public class User {
 
 
     @Column(unique = true)
-
+    @Size(min = 3, message = "Name must be at least 3 characters")
     private String name;
 
+    @Email
     private String email;
 
 
+    @Size(min = 5, message = "Name must be at least 5 characters")
     private String password;
 
     private boolean enabled;

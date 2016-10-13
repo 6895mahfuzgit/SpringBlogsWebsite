@@ -1,6 +1,9 @@
 package com.blog.start.jpa.entity;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -15,8 +18,10 @@ public class Blog {
     private Integer id;
 
     @Column(length = 1000)
+    @URL
     private String url;
 
+    @Size(min = 1, message = "Name must be at least 1 character!")
     private String name;
 
     @ManyToOne
