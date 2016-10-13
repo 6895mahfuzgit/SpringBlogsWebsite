@@ -60,6 +60,8 @@
     <h2 class="form-signin-heading">Please sign in</h2>
     <input type="text" name="j_username" class="form-control" placeholder="Name" required autofocus>
     <input type="password" name="j_password" class="form-control" placeholder="Password" required>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 </form>

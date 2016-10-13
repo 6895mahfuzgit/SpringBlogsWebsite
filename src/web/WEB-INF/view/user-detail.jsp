@@ -18,7 +18,7 @@
 </c:if>
 
 
-<h1>${user.name}</h1>
+<h1><c:out value="${user.name}"/></h1>
 
 
 <!-- Button trigger modal -->
@@ -110,12 +110,12 @@
             <div class="tab-pane" id="blog_${blog.id}">
 
 
-                <h1>${blog.name}</h1>
+                <h1><c:out value="${blog.name}"/></h1>
 
                 <p>
                     <a href="<spring:url value="/blog/remove/${blog.id}"  />" class="btn btn-danger triggerRemove">Remove
                         Blog</a>
-                        ${blog.url}</p>
+                    <c:out value="${blog.url}"/></p>
 
                 <table class="table  table-bordered  table-hover table-striped table-sm">
                     <thead>
@@ -130,8 +130,8 @@
                     <c:forEach items="${blog.items}" var="item">
 
                         <tr>
-                            <th>${item.title}</th>
-                            <th>${item.link}</th>
+                            <th><c:out value="${item.title}"/></th>
+                            <th><c:out value="${item.link}"/></th>
 
                         </tr>
 

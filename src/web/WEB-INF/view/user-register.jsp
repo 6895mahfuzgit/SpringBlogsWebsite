@@ -52,4 +52,5 @@
             <button type="submit" value="save" class="btn btn-default">Sign in</button>
         </div>
     </div>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form:form>
