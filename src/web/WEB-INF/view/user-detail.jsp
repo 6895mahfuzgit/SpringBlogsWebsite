@@ -70,57 +70,73 @@
 <br/>
 <br/>
 
+
 <div>
 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.nav-tabs a:first').tab('show') // Select first tab
+
+        });
+    </script>
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                  data-toggle="tab">Home</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
-        </li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-        </li>
+    <ul class="nav nav-tabs">
+
+
+        <c:forEach items="${user.blogs}" var="blog">
+            <li><a href="#blog_${blog.id}"
+                   data-toggle="tab">${blog.name}</a></li>
+
+        </c:forEach>
+
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">...</div>
-        <div role="tabpanel" class="tab-pane" id="profile">...</div>
-        <div role="tabpanel" class="tab-pane" id="messages">...</div>
-        <div role="tabpanel" class="tab-pane" id="settings">...</div>
-    </div>
 
-</div>
+        <c:forEach items="${user.blogs}" var="blog">
 
-<c:forEach items="${user.blogs}" var="blog">
-    <h1>${blog.name}</h1>
+            <div class="tab-pane" id="blog_${blog.id}">
 
-    <p>${blog.url}</p>
 
-    <table class="table  table-bordered  table-hover table-striped table-sm">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Link</th>
+                <h1>${blog.name}</h1>
 
-        </tr>
-        </thead>
-        <tbody>
+                <p>
+                    <a href="<spring:url value="/blog/remove/${blog.id}" />">Remove Blog</a>
+                        ${blog.url}</p>
 
-        <c:forEach items="${blog.items}" var="item">
+                <table class="table  table-bordered  table-hover table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Link</th>
 
-            <tr>
-                <th>${item.title}</th>
-                <th>${item.link}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-            </tr>
+                    <c:forEach items="${blog.items}" var="item">
+
+                        <tr>
+                            <th>${item.title}</th>
+                            <th>${item.link}</th>
+
+                        </tr>
+
+                    </c:forEach>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
 
         </c:forEach>
 
-        </tbody>
+    </div>
 
-
-    </table>
-</c:forEach>
-
+</div>

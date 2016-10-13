@@ -101,7 +101,17 @@ public class UserController {
 
         blogService.save(blog, name);
 
-        redirectAttributes.addFlashAttribute("blogadded",true);
+        redirectAttributes.addFlashAttribute("blogadded", true);
+        return "redirect:/account";
+
+    }
+
+
+    @RequestMapping("/blog/remove/{id}")
+    public String deleteBlog(@PathVariable int id) {
+
+
+        blogService.delete(id);
         return "redirect:/account";
 
     }
