@@ -110,6 +110,7 @@ public class UserController {
 
     }
 
+
     @RequestMapping("/users/remove/{id}")
     public String userRemove(@PathVariable int id) {
         userService.delete(id);
