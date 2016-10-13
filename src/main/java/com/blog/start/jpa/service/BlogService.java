@@ -2,7 +2,9 @@ package com.blog.start.jpa.service;
 
 import com.blog.start.jpa.entity.Blog;
 import com.blog.start.jpa.entity.Item;
+import com.blog.start.jpa.entity.User;
 import com.blog.start.jpa.repositorie.BlogRepository;
+import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,4 +14,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class BlogService {
 
+
+    @Autowired
+    private BlogRepository blogRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+
+    public void save(Blog blog, String name) {
+
+        User user = userRepository.findByName(name);
+        blog.setUser(user);
+        blogRepository.save(blog);
+
+    }
 }
