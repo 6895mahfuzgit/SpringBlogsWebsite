@@ -59,6 +59,7 @@
                     </li>
 
                     <li class="${current=='login'?'active':''}"><a href="<spring:url value="/login"/>">Login</a></li>
+                    <li><a href="<spring:url value="/logout"/>">Logout</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
