@@ -59,11 +59,12 @@
                         <li class="${current=='users'?'active':''}"><a href="<spring:url value="/users"/>">Users</a>
                         </li>
                     </security:authorize>
-
-                    <li class="${current=='register'?'active':''}"><a
-                            href="<spring:url value="/register"/>">Register</a>
-                    </li>
                     <security:authorize access="!isAuthenticated()">
+
+
+                        <li class="${current=='register'?'active':''}"><a
+                                href="<spring:url value="/register"/>">Register</a>
+                        </li>
 
                         <li class="${current=='login'?'active':''}"><a href="<spring:url value="/login"/>">Login</a>
                         </li>
@@ -73,7 +74,8 @@
 
                         <%--/account--%>
 
-                        <li class="${current=='account'?'active':''}"><a href="<spring:url value="/account"/>">My Account</a>
+                        <li class="${current=='account'?'active':''}"><a href="<spring:url value="/account"/>">My
+                            Account</a>
 
                         <li><a href="<spring:url value="/logout"/>">Logout</a></li>
                     </security:authorize>

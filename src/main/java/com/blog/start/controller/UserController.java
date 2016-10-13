@@ -76,8 +76,9 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doRegisterForm(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
 
-        userService.save(user);
+
         redirectAttributes.addFlashAttribute("success", true);
+        userService.save(user);
         return "redirect:/register";
 
     }
@@ -85,11 +86,8 @@ public class UserController {
 
     @RequestMapping("/account")
     public String personaldetails(Model model, Principal principal) {
-
-
         String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
-
         return "user-detail";
 
     }
@@ -98,9 +96,7 @@ public class UserController {
     public String doRegister(@ModelAttribute("blog") Blog blog, Principal principal, RedirectAttributes redirectAttributes) {
 
         String name = principal.getName();
-
         blogService.save(blog, name);
-
         redirectAttributes.addFlashAttribute("blogadded", true);
         return "redirect:/account";
 
@@ -109,10 +105,15 @@ public class UserController {
 
     @RequestMapping("/blog/remove/{id}")
     public String deleteBlog(@PathVariable int id) {
-
-
         blogService.delete(id);
         return "redirect:/account";
+
+    }
+
+    @RequestMapping("/users/remove/{id}")
+    public String userRemove(@PathVariable int id) {
+        userService.delete(id);
+        return "redirect:/users";
 
     }
 
