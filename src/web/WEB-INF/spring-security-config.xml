@@ -18,6 +18,7 @@
 
     <authentication-manager>
         <authentication-provider>
+            <password-encoder hash="md5"/>
             <jdbc-user-service data-source-ref="dataSource"
                                authorities-by-username-query="select app_user.name, role.name from app_user
 											   join app_user_role on app_user.id = app_user_role.users_id

@@ -9,6 +9,7 @@ import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.repositorie.RoleRepository;
 import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -58,7 +59,9 @@ public class InitDbService {
         User userAdmin = new User();
         userAdmin.setName("admin");
         userAdmin.setEnabled(true);
-        userAdmin.setPassword("admin");
+        Md5PasswordEncoder md5PasswordEncoder = new Md5PasswordEncoder();
+
+        userAdmin.setPassword(md5PasswordEncoder.encodePassword("admin", null));
 
         List<Role> roles = new ArrayList<Role>();
         roles.add(roleAdmin);
