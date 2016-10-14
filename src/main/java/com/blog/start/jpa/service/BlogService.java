@@ -57,7 +57,7 @@ public class BlogService {
 
     }
 
-
+      //1 hour
     @Scheduled(fixedDelay = 3600000)
     public void reloadBlog() {
 

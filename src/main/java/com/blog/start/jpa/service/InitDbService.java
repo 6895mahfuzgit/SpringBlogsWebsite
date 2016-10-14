@@ -1,7 +1,6 @@
 package com.blog.start.jpa.service;
 
 import com.blog.start.jpa.entity.Blog;
-import com.blog.start.jpa.entity.Item;
 import com.blog.start.jpa.entity.Role;
 import com.blog.start.jpa.entity.User;
 import com.blog.start.jpa.repositorie.BlogRepository;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -77,23 +75,6 @@ public class InitDbService {
         blogjinit.setUrl("http://feeds.feedburner.com/javavids?format=xml");
         blogjinit.setUser(userAdmin);
         blogRepository.save(blogjinit);
-
-
-        Item item1 = new Item();
-        item1.setBlog(blogjinit);
-        item1.setTitle("First");
-        item1.setLink("http://www.javavids.com");
-        item1.setPublishedDate(new Date());
-
-        itemRepository.save(item1);
-
-        Item item2 = new Item();
-        item2.setBlog(blogjinit);
-        item2.setTitle("2nd");
-        item2.setLink("http://www.javavidzcvbc s.com");
-        item2.setPublishedDate(new Date());
-
-        itemRepository.save(item2);
 
     }
 
