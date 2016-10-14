@@ -69,7 +69,6 @@ public class UserController {
     public String deleteBlog(@PathVariable int id) {
 
         Blog blog = blogService.findOne(id);
-
         blogService.delete(blog);
         return "redirect:/account";
 
