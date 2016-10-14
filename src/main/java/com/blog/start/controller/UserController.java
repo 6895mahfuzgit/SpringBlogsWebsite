@@ -1,9 +1,6 @@
 package com.blog.start.controller;
 
 import com.blog.start.jpa.entity.Blog;
-import com.blog.start.jpa.entity.User;
-import com.blog.start.jpa.repositorie.BlogRepository;
-import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.service.BlogService;
 import com.blog.start.jpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +71,7 @@ public class UserController {
         Blog blog = blogService.findOne(id);
 
         blogService.delete(blog);
+
         return "redirect:/account";
 
     }
