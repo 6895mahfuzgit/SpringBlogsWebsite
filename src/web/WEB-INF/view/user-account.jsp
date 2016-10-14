@@ -122,7 +122,7 @@
                 <table class="table  table-bordered  table-hover table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>Title</th>
+                        <th>Date</th>
                         <th>Link</th>
 
                     </tr>
@@ -132,8 +132,20 @@
                     <c:forEach items="${blog.items}" var="item">
 
                         <tr>
-                            <th><c:out value="${item.title}"/></th>
-                            <th><c:out value="${item.link}"/></th>
+                            <th><c:out value="${item.publishedDate}"/></th>
+                            <th>
+                                <strong>
+                                    <a href="<c:out value="${item.link}"/>" target="_blank">
+
+                                        <c:out value="${item.title}"/>
+                                    </a>
+
+                                </strong>
+                                <br/>
+                                    ${item.description}
+
+
+                            </th>
 
                         </tr>
 

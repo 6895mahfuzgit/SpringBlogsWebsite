@@ -12,5 +12,8 @@ import java.util.List;
  */
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
-    List<Item> findByBlog(Blog blog , Pageable pageable);
+    List<Item> findByBlog(Blog blog, Pageable pageable);
+
+
+    Item findByBlogAndLink(Blog blog, String link);
 }
