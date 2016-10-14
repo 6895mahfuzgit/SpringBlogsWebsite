@@ -8,7 +8,6 @@ import com.blog.start.jpa.repositorie.BlogRepository;
 import com.blog.start.jpa.repositorie.ItemRepository;
 import com.blog.start.jpa.repositorie.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -56,7 +55,7 @@ public class BlogService {
         }
 
     }
-
+/*
     //1 hour
     @Scheduled(fixedDelay = 3600000)
     public void reloadBlog() {
@@ -69,7 +68,7 @@ public class BlogService {
 
         }
 
-    }
+    }*/
 
 
     public void save(Blog blog, String name) {
