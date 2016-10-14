@@ -71,7 +71,6 @@ public class UserController {
         Blog blog = blogService.findOne(id);
 
         blogService.delete(blog);
-
         return "redirect:/account";
 
     }
