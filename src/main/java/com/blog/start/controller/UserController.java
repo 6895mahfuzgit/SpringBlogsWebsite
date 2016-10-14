@@ -94,7 +94,7 @@ public class UserController {
     public String account(Model model, Principal principal) {
         String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
-        return "user-detail";
+        return "account";
 
     }
 
