@@ -62,6 +62,7 @@ public class UserController {
         String name = principal.getName();
         blogService.save(blog, name);
         redirectAttributes.addFlashAttribute("blogadded", true);
+
         return "redirect:/account";
 
     }
