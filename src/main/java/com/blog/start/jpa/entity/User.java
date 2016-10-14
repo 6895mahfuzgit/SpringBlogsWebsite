@@ -1,5 +1,6 @@
 package com.blog.start.jpa.entity;
 
+import com.blog.start.annotation.UniqueUserName;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class User {
 
     @Column(unique = true)
     @Size(min = 3, message = "Name must be at least 3 characters")
+    @UniqueUserName(message = "User Name Already Exist")
     private String name;
 
     @Email(message = "Invalid Email Address")
