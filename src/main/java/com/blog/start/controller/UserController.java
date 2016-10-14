@@ -23,6 +23,7 @@ import java.security.Principal;
  * Created by MahfuzCSE'11 on 12-Oct-16.
  */
 @Controller
+
 public class UserController {
 
 
@@ -38,28 +39,6 @@ public class UserController {
     public Blog constructBlog() {
 
         return new Blog();
-    }
-
-
-    @RequestMapping("/register")
-    public String showRegisterForm() {
-
-        return "user-register";
-
-    }
-
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegisterForm(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
-
-        if (result.hasErrors()) {
-            return "user-register";
-        }
-
-        redirectAttributes.addFlashAttribute("success", true);
-        userService.save(user);
-        return "redirect:/register";
-
     }
 
 
