@@ -16,13 +16,22 @@ import javax.validation.Valid;
  * Created by MahfuzCSE'11 on 14-Oct-16.
  */
 @Controller
+@RequestMapping("/register")
 public class RegisterController {
 
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/register")
+
+    @ModelAttribute("user")
+    public User construct() {
+
+        return new User();
+    }
+
+
+    @RequestMapping
     public String showRegisterForm() {
 
 
@@ -31,7 +40,7 @@ public class RegisterController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String doRegisterForm(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
 
 

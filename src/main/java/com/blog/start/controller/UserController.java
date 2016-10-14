@@ -34,41 +34,15 @@ public class UserController {
     private BlogService blogService;
 
 
-    @ModelAttribute("user")
-    public User construct() {
-
-        return new User();
-    }
-
     @ModelAttribute("blog")
     public Blog constructBlog() {
 
         return new Blog();
     }
 
-    @RequestMapping("/users")
-    public String users(Model model) {
-
-
-        model.addAttribute("users", userService.findAll());
-
-        return "users";
-    }
-
-    @RequestMapping("/users/{id}")
-    public String details(Model model, @PathVariable int id) {
-
-
-        model.addAttribute("user", userService.findOneWithBlogs(id));
-
-        return "user-detail";
-
-    }
-
 
     @RequestMapping("/register")
     public String showRegisterForm() {
-
 
         return "user-register";
 
@@ -77,7 +51,6 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doRegisterForm(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes redirectAttributes) {
-
 
         if (result.hasErrors()) {
             return "user-register";
@@ -103,7 +76,6 @@ public class UserController {
 
 
         if (result.hasErrors()) {
-
             return account(model, principal);
         }
 
@@ -123,14 +95,6 @@ public class UserController {
 
         blogService.delete(blog);
         return "redirect:/account";
-
-    }
-
-
-    @RequestMapping("/users/remove/{id}")
-    public String userRemove(@PathVariable int id) {
-        userService.delete(id);
-        return "redirect:/users";
 
     }
 
