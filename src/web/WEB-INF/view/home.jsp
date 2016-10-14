@@ -7,47 +7,39 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../layout/taglibs.jsp" %>
-<div class="container-fluid">
-    <div class="jumbotron">
-        <h1>Latest News From Spring World!</h1>
 
-    </div>
+<div class="Header">
+    <h2>Latest News From Spring World!</h2>
+
 </div>
 
-<table class="table  table-bordered  table-hover table-striped table-sm">
+
+<table class="table table-bordered table-hover table-striped">
     <thead>
     <tr>
-        <th>Date</th>
-        <th>Items</th>
-
+        <th>date</th>
+        <th>item</th>
     </tr>
     </thead>
     <tbody>
-
-    <c:forEach items="${blog.items}" var="item">
-
+    <c:forEach items="${item}" var="item">
         <tr>
-            <th><c:out value="${item.publishedDate}"/></th>
-            <th>
+            <td>
+                <c:out value="${item.publishedDate}"/>
+                <br/>
+                <c:out value="${item.blog.name}"/>
+            </td>
+            <td>
                 <strong>
-                    <a href="<c:out value="${item.link}"/>" target="_blank">
-
+                    <a href="<c:out value="${item.link}" />" target="_blank">
                         <c:out value="${item.title}"/>
                     </a>
-
                 </strong>
                 <br/>
                     ${item.description}
-
-
-            </th>
-
+            </td>
         </tr>
-
     </c:forEach>
-
     </tbody>
-
-
 </table>
 
